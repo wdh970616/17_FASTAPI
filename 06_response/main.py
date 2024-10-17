@@ -9,23 +9,21 @@ app = FastAPI()
 # 자동 변환 : 응답 데이터를 지정된 모델의 형식으로 변환
 # 문서화 : API 문서에 응답 데이터의 구조가 명확히 표시됨
 
+
 class Teacher(BaseModel):
     name: str
     teacher_id: int
     nickname: str
-    
-@app.get('/teacher/{teacher_id}')
-async def get_teacher(teacher_id:int):
-    
+
+
+@app.get("/teacher/{teacher_id}")
+async def get_teacher(teacher_id: int):
+
     # 서비스로직을 통해 return 객체 형태로 만들고
     # teacher = Teacher(
     #     name='태근',
     #     teacher_id=teacher_id,
     #     nickname='bear'
     # )
-    
-    return {
-        'name': '태근',
-        'teacher_id': teacher_id,
-        'nickname': 'bear'
-    }
+
+    return {"name": "태근", "teacher_id": teacher_id, "nickname": "bear"}
