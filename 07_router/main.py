@@ -32,8 +32,7 @@ app.include_router(router)
 app.include_router(student_router.student)
 app.include_router(teacher_router.teacher)
 
-@app.get('/')
+
+@app.get("/")
 async def root():
-    return {
-        'message': 'Hello FastAPI!'
-    }
+    return {"message": "Hello FastAPI!"}
