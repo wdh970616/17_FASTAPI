@@ -9,7 +9,7 @@ from sqlalchemy.ext.declarative import declarative_base
 # 엔진 생성을 위한 함수
 
 # sqlite : 파이썬에 내장되어있는 DB 라이브러리이다.
-DB_URL = 'sqlite:///todo.sqlite3'
+DB_URL = "sqlite:///todo.sqlite3"
 
 # 데이터베이스 엔진 생성
 engine = create_engine(DB_URL)

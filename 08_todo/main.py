@@ -12,18 +12,22 @@ app = FastAPI()
 # 데이터베이스 테이블 생성
 models.Base.metadata.create_all(bind=engine)
 
+
 # 데이터베이스 세션
 def get_db():
-    db = session_local() # 호출될때마다 새로운 객체 생성
+    db = session_local()  # 호출될때마다 새로운 객체 생성
     try:
-        yield db # 데이터베이스 세션 객체 반환
+        yield db  # 데이터베이스 세션 객체 반환
     finally:
         db.close()
-        
-@app.get('/')
+
+
+@app.get("/")
 async def home(request: Request, db: Session = Depends(get_db)):
     # 데이터베이스에서 Todo 모델을 가져온다.
     todos = db.query(models.Todo).order_by(models.Todo.id.desc())
-    
+
     # 인덱스 템플릿 랜더링
-    return templates.TemplateResponse('index.html', {'request': request, 'todos': todos})
+    return templates.TemplateResponse(
+        "index.html", {"request": request, "todos": todos}
+    )
